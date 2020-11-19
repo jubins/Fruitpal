@@ -22,7 +22,7 @@ class PricingModel(object):
 
     @staticmethod
     def compute_fixed_overhead(price, volume, overhead):
-        return (price+overhead)*volume
+        return (price+overhead)*volume, f"({overhead:.2f} + {price}) * {volume}"
 
     @staticmethod
     def compute_variable_overhead(price, volume, overhead):

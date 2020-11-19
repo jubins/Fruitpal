@@ -31,15 +31,20 @@ class Trade(Resource):
         results = CommodityModel.query.filter_by(commodity=args.get('commodity')).all()
         response = {'obj': {'data': list(), 'length': len(results)}}
         country_to_price = dict()
+        country_to_formula = dict()
         for result in results:
             country = getattr(result, 'country')
-            total_price = PricingModel.compute_fixed_overhead(args.get('price'),
+            total_price, formula = PricingModel.compute_fixed_overhead(args.get('price'),
                                                               args.get('volume'),
                                                               getattr(result, 'variable_overhead'))
             country_to_price[country] = float(total_price)
+            country_to_formula[country] = formula
         sorted_country_to_price = sorted(country_to_price, key=country_to_price.get, reverse=True)
         for country in sorted_country_to_price:
-            response['obj']['data'].append({'country': country, 'total_price': country_to_price.get(country)})
+            response['obj']['data'].append({'country': country,
+                                            'total_price': "{:.2f}".format(country_to_price.get(country)),
+                                            'formula': country_to_formula.get(country),
+                                            })
         return response
 
     @marshal_with(ResourceFields.put_schema())
