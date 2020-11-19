@@ -57,7 +57,7 @@ class Trade(Resource):
             db.session.commit()
             return commodity, 201
         except Exception as err:
-            return "Record already exists in the database", 400, 'Bad request'
+            return "Record already exists in the database", 400
 
 
 api.add_resource(Trade, '/api/fruitpal')
