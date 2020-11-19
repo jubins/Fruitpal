@@ -1,0 +1,8 @@
+version: '3'
+services:
+  fruitpal-service:
+    build: ./fruitpal
+    volumes:
+    - ./fruitpal:/usr/src/app
+    ports:
+    - 5001:90
