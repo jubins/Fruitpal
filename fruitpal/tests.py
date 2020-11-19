@@ -31,5 +31,13 @@ class TestFruitpal(unittest.TestCase):
         self.assertEqual(response.json(), expected)
 
 
+def print_given_input():
+    response = request(method='GET', url=BASE + "api/fruitpal?commodity=mango&price=53&volume=405")
+    print('API call: {}/{}'.format(BASE, 'api/fruitpal?commodity=mango&price=53&volume=405'))
+    print('Output: ', response.json())
+
+
 if __name__ == '__main__':
+    print_given_input()
     unittest.main()
+
