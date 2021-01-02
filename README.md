@@ -1,7 +1,6 @@
 # Fruitpal
 
-A tool for trading tropical fruits which allows a trader to understand the full
-cost of buying fruit from various countries of origin.
+API for trading tropical fruits that allows a trader to understand the full cost of buying fruit from various countries of origin.
 
 ### Setup
 1. **Start the server**: Type `docker-compose up --build` to start the server. Make sure you are in the main project directory that contains the `docker-compose.yml` file and have docker/docker-compose installed and running.
